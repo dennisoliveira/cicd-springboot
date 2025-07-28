@@ -21,6 +21,8 @@ public class HelloControllerTest {
     public void testHelloEndpoint() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello, World!"));
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("Olá mundo!")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("<html>")));
     }
 }
